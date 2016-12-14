@@ -20,7 +20,15 @@
           <a ng-href="#/contact/{{contact._id}}">{{ contact.firstName }} {{ contact.lastName }}</a>
         </td>
         <td>
-          <canvas id="myChart" width="400" height="400"></canvas>
+                   <a>{{contact.roll}}</a>
+        </td>
+	<td>
+          <a> Accel Data  {{contact.accelData}}</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+   <canvas id="myChart" width="400" height="400"></canvas>
 <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
@@ -60,12 +68,5 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
-          <a>{{contact.roll}}</a>
-        </td>
-	<td>
-          <a> Accel Data  {{contact.accelData}}</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+ 
 </div>
