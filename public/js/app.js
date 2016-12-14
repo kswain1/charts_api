@@ -72,6 +72,38 @@ angular.module("contactsApp", ['ngRoute'])
     })
     .controller("ListController", function(contacts, $scope) {
         $scope.contacts = contacts.data;
+        //var l = contacts.data.length;
+
+        contacts.data.forEach(function(c) {
+            setTimeout(function() {
+                if (!c.roll) return;
+
+                var ctx = document.getElementById(c._id.toString()).getContext('2d');
+                var indices = [],
+                    l = c.roll.length;
+
+                for (var ind = 0; ind < l; ind++) {
+                    indices.push(ind);
+                }
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: indices,
+                        datasets: [
+                            {
+                                label: "Roll",
+                                borderWidth: 1,
+                                data: c.roll,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true
+                    }
+                });
+            }, 100);
+            
+        });
     })
     .controller("NewContactController", function($scope, $location, Contacts) {
         $scope.back = function() {
